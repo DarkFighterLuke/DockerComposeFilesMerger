@@ -11,7 +11,7 @@ type DockerCompose struct {
 
 type Service struct {
 	Image           string                 `yaml:"image,omitempty"`
-	Build           string                 `yaml:"build,omitempty"`
+	Build           Build                 `yaml:"build,omitempty"`
 	NetworkMode     string                 `yaml:"network_mode,omitempty"`
 	Networks        map[string]interface{} `yaml:"networks,omitempty"`
 	Ports           []string               `yaml:"ports,omitempty"`
@@ -45,6 +45,13 @@ type Service struct {
 	User            string                 `yaml:"user,omitempty"`
 	Dns             []string               `yaml:"dns,omitempty"`
 	Restart string `yaml:"restart,omitempty"`
+}
+
+type Build struct {
+    Context    string            `yaml:"context,omitempty"`
+    Dockerfile string            `yaml:"dockerfile,omitempty"`
+    Args       map[string]string `yaml:"args,omitempty"`
+    Target     string            `yaml:"target,omitempty"`
 }
 
 type Network struct {
